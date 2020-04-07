@@ -11,13 +11,14 @@ Unity 2019.2.3f1
 ## 遊び方
 
 - このゲームの弾はプレイヤーや敵、そして他の弾に当たると反射してしまい、縦横無尽に動きます。
-- プレイヤーが放った弾に当たっても、プレイヤーはダメージを受けてしまいます。それは敵も同じです。そのため、自分が打った弾は避けなくてはならない弾幕の 一部に変化します。
+- プレイヤーが放った弾に当たっても、プレイヤーはダメージを受けてしまいます。そのため、自分が打った弾にも対処する必要があります。
 - プレイヤーはその弾幕を避けるか、被弾しそうな弾に弾を放って跳ね返してください。
+- 敵を倒すとアイテムが出現することがあります。
 - 多くの敵を倒して高得点を目指すことがこのゲームの目的です。
 
 ## 操作方法
 
-このゲームはキーボードとマウスを使います。コントローラー等の操作は対応していません。
+このゲームはキーボードとマウスを使います。
 - WASDキー,方向キー : 移動
 - 左クリック : 弾をマウスカーソルの方向に放つ
 - 右クリック : 画面上の弾を全て消去する(ボムの残数が0の場合は使用できません)
@@ -61,8 +62,9 @@ Unity 2019.2.3f1
           8. sikaku_Wall_Elite.prefab : バリアを張っている四角形の敵の強化版
         - Player.prefab : プレイヤーのオブジェクト
       - Item : アイテムのオブジェクトのディレクトリ
-        1. Bomu_Item.prefab : ボムを１回復させるアイテムKabe_Item.prefab : プレイヤーの正面にバリアを張るアイテム
-        2. Life_Item.prefab : 体力を１回復させるアイテム
+        1. Bomu_Item.prefab : ボムを１回復させるアイテム
+        2. Kabe_Item.prefab : プレイヤーの正面にバリアを張るアイテム
+        3. Life_Item.prefab : 体力を１回復させるアイテム
       - Tama : 弾のオブジェクトのディレクトリ
         - Title_You : タイトル画面用にサイズを調整した弾のディレクトリ
           1. Kuro_Circle.prefab : 丸の弾のオブジェクト
@@ -99,7 +101,7 @@ Unity 2019.2.3f1
       - Title.cs : タイトル画面で使用するプログラム
     - Sound : ゲーム中に使用するBGM、効果音のディレクトリ
       1. BGM_Title.mp3 : タイトル画面のBGM
-      2. Game_BGM.mp3 : 遊ぶ画面のBGM
+      2. Game_BGM.mp3 : プレイ画面のBGM
       3. Enemy_Gekiha.mp3 : 敵を撃破した時の効果音
       4. Baria_Break.mp3 : バリアが破壊されたときの効果音
       5. Gameover.mp3 : ゲームが終了した時の効果音
@@ -109,15 +111,18 @@ Unity 2019.2.3f1
       9. Pause.mp3 : ポーズを行った時、解除したときの効果音
       10. shot.mp3 : 弾を打ったときの効果音
       11. Use_Bomu.mp3 : ボムを使用した時の効果音
-  - ProjectSettings : プロジェクトの各種設定を保存するディレクトリ
   - Packages : パッケージのディレクトリ
-  
-
+  - ProjectSettings : プロジェクトの各種設定を保存するディレクトリ
+  - Readme_Screenshot : READMEファイルに使用したゲームのスクリーンショットのディレクトリ
+    1. HansyaShooting_SS_Play.png : プレイ画面のスクリーンショット
+    2. HansyaShooting_SS_Title.png : タイトル画面のスクリーンショット
+  - .gitattributes
+  - .gitignore
 
 ## タイトル画面のスクリーンショット
 
 ![タイトル画面](./Readme_Screenshot/HansyaShooting_SS_Title.png)
 
-## ゲーム画面のスクリーンショット
+## プレイ画面のスクリーンショット
 
-![ゲーム画面](./Readme_Screenshot/HansyaShooting_SS_Play.png)
+![プレイ画面](./Readme_Screenshot/HansyaShooting_SS_Play.png)
