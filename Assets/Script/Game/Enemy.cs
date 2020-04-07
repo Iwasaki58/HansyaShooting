@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     public bool Elite = false;//強化版かどうか
 
     Vector3 Syokiiti;//初期位置
-    bool StartMove = false;//初期位置への移動が終わったどうか
+    bool StartMove = false;//初期位置への移動が終わったどうか(false=移動中,true=移動終了)
 
     Enemy_Dasu Enemy_Dasu;
 

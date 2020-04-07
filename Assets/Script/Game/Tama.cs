@@ -73,11 +73,8 @@ public class Tama : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnBecameInvisible()
     {
-        if (collision.gameObject.tag == "Delete")//画面外に出たらこれを消去
-        {
-            Destroy(this.gameObject);
-        }
+        Destroy(this.gameObject);
     }
 }

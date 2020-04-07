@@ -9,6 +9,8 @@ public class Wall_Life : MonoBehaviour
     int Life = 5;//今の耐久力
     int Max_Life = 5;//耐久力の最大値
 
+    float PlayerKyori = 0;//プレイヤーの壁の場合、プレイヤーとバリアとの距離
+
     public bool Player_Wall = false;//プレイヤーの壁かどうか
 
     GameObject Player;
@@ -28,12 +30,17 @@ public class Wall_Life : MonoBehaviour
         }
     }
 
+    public void Set_PlayerKyori(float num)
+    {
+        PlayerKyori = num;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if(Player != null) //プレイヤーの壁ならそれに追従
+        if(Player != null) //プレイヤーの壁ならそれに決まった距離で追従
         {
-            this.transform.position = new Vector2(Player.transform.position.x,Player.transform.position.y + 1);
+            this.transform.position = new Vector2(Player.transform.position.x,Player.transform.position.y + PlayerKyori);
         }
     }
 

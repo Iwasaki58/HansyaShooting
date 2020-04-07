@@ -13,7 +13,7 @@ public class Move_Wall : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()//上から下にとにかく動かす
+    void Update()//上から下に動かす
     {
         this.transform.position = Vector2.MoveTowards(this.transform.position, new Vector2(this.transform.position.x, -18f), Time.deltaTime * 1.5f);//少しずつ下に移動
     }

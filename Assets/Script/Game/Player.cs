@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
 
     Audio audio_script;
 
+    float BariaKyori = 0.8f;//バリアを張るとき、プレイヤーとバリアとの距離
+
     // Start is called before the first frame update
     void Start()
     {
@@ -129,7 +131,8 @@ public class Player : MonoBehaviour
     {
         if (Made_Wall == null)//今バリアを張っていないなら作成
         {
-            Made_Wall = Instantiate(Wall,new Vector2(this.transform.position.x,this.transform.position.y + 1),Quaternion.identity);//プレイヤーの少し上
+            Made_Wall = Instantiate(Wall,new Vector2(this.transform.position.x,this.transform.position.y + BariaKyori),Quaternion.identity);//プレイヤーの少し上
+            Made_Wall.GetComponent<Wall_Life>().Set_PlayerKyori(BariaKyori);
             Made_Wall.name = Wall.name;
             Made_Wall.transform.parent = GameObject.Find("Kabe_Parent").transform;
         }
