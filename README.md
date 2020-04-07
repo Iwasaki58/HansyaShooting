@@ -118,6 +118,7 @@ Unity 2019.2.3f1
     2. HansyaShooting_SS_Title.png : タイトル画面のスクリーンショット
   - .gitattributes
   - .gitignore
+  - README.md : プロジェクトの概要を記述したファイル
 
 ## タイトル画面のスクリーンショット
 
