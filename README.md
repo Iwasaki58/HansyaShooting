@@ -128,4 +128,4 @@ Unity 2019.2.3f1
 
 ## プレイ画面のスクリーンショット
 
-![プレイ画面](./Readme_Screenshot/HansyaShooting_SS_Title.png)
+![プレイ画面](./Readme_Screenshot/HansyaShooting_SS_Play.png)
