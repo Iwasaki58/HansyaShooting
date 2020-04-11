@@ -34,7 +34,7 @@ public class Make_Wall : MonoBehaviour
 
                 int num = Random.Range(0, Wall.Count);//作成する壁の添え字
 
-                GameObject a = Instantiate(Wall[num], new Vector2(0, 6), Quaternion.identity);//ランダムな壁を作成
+                GameObject a = Instantiate(Wall[num], new Vector2(Wall[num].transform.position.x, 6), Quaternion.identity);//ランダムな壁を作成
 
                 a.transform.parent = Kabe_Parent.transform;
             }

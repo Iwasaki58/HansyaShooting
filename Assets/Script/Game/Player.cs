@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     float NowTime = 0;//無敵になってからの時間
     bool Now_Muteki = false;//今が無敵状態か
 
-    bool Title = false;//今のシーンはタイトルか
+    bool Now_ScoreAttack = false;//今のシーンはスコアアタックか
 
     Audio audio_script;
 
@@ -37,17 +37,22 @@ public class Player : MonoBehaviour
 
         audio_script = GameObject.Find("Audio_Matome").GetComponent<Audio>();
 
-        if (SceneManager.GetActiveScene().name.Equals("Game"))//今のシーンを調べる
+        switch (SceneManager.GetActiveScene().name)
         {
-            this.gameObject.transform.position = new Vector2(-2,-3);//初期位置
+            case "ScoreAttack":
+                this.gameObject.transform.position = new Vector2(-2, -3);//初期位置
+                matome = GameObject.Find("UI_Ground").GetComponent<Matome>();
 
-            matome = GameObject.Find("UI_Ground").GetComponent<Matome>();
-            Make_Wall();//初期でバリアを張る
-        }
-        else
-        {
-            this.gameObject.transform.position = new Vector2(0, -2);//初期位置
-            Title = true;
+                Now_ScoreAttack = true;
+                Make_Wall();//初期でバリアを張る
+                break;
+            case "TimeAttack":
+                this.gameObject.transform.position = new Vector2(0, -2);//初期位置
+                matome = GameObject.Find("UI_Ground").GetComponent<Matome>();
+                break;
+            case "Title":
+                this.gameObject.transform.position = new Vector2(0, -2);//初期位置
+                break;
         }
     }
 
@@ -82,7 +87,7 @@ public class Player : MonoBehaviour
         float ue = 4;
         float sita = -4.5f;
 
-        if (Title == true)//タイトル画面ならそれ用の規定に変える
+        if (Now_ScoreAttack == false)//スコアアタックではないなら、それ用の上限に変える
         {
             hidari = -7.35f;
             migi = 7.35f;

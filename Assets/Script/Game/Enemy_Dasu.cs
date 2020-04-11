@@ -21,15 +21,22 @@ public class Enemy_Dasu : MonoBehaviour
 
     Audio audio_script;
 
-    bool Game_Now = false;//今のシーンがGameかどうか
+    bool Game_Now = false;//今のシーンがTitleかどうか(false=タイトル,true=それ以外)
+
     // Start is called before the first frame update
     void Start()
     {
-        if (SceneManager.GetActiveScene().name.Equals("Game") )//今のシーンがGameなら
+        switch (SceneManager.GetActiveScene().name)//今のシーンがタイトル画面ではないなら
         {
-            Game_Now = true;
-            matome = GameObject.Find("UI_Ground").GetComponent<Matome>();
+            case "ScoreAttack"://スコアアタック
+                matome = GameObject.Find("UI_Ground").GetComponent<Matome>();
+                Game_Now = true;
+                break;
+            case "TimeAttack"://タイムアタック
+                matome = GameObject.Find("UI_Ground").GetComponent<Matome>();
+                break;
         }
+
         audio_script = GameObject.Find("Audio_Matome").GetComponent<Audio>();
 
         Enemy_Spawn();//敵を出す
@@ -60,10 +67,10 @@ public class Enemy_Dasu : MonoBehaviour
                 child.gameObject.GetComponent<Enemy>().Escape_On();
             }
 
-            float X = -5f;//配置する敵のxの座標
-            float X_plus = 3;//次に配置する敵のx座標の間隔
+            float X = -5.5f;//配置する敵のxの座標
+            float X_plus = 3.5f;//次に配置する敵のx座標の間隔
 
-            if (Game_Now == false)//今のシーンがtitleなら変更
+            if (Game_Now == false)//今のシーンがスコアアタックではないなら、x座標を変更
             {
                 X = -5.5f;
                 X_plus = 5.5f;

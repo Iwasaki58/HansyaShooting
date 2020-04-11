@@ -16,8 +16,13 @@ public class Title : MonoBehaviour
         #endif
     }
 
-    public void GameStart()//ゲームを始める
+    public void ScoreAttackStart()//スコアアタック
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("ScoreAttack");
+    }
+
+    public void TimeAttackStart()//タイムアタック
+    {
+        SceneManager.LoadScene("TimeAttack");
     }
 }

@@ -45,17 +45,15 @@ public class Cursor_Manager : MonoBehaviour//カーソルの処理
         
     }
 
-    void Shot()
+    void Shot()//球を放つ
     {
         NowTime = 0;
 
         Vector3 Player_Vector = new Vector3(Player.transform.position.x, Player.transform.position.y + 1.5f, 0);//プレイヤーの発射位置の場所を求める
 
-        Vector2 dif = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Player_Vector;//カーソルからプレイヤーの方向を求める
+        Vector2 dif = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Player_Vector;//カーソルとプレイヤーの位置から、球が動く方向を求める
 
-        //float radian = Mathf.Atan2(dif.y,dif.x);//カーソルとプレイヤーの間の角度(ラジアン)を求める
-
-        GameObject bullet = Instantiate(Bullet, Player_Vector, Player.transform.rotation);//弾を発射
+        GameObject bullet = Instantiate(Bullet, Player_Vector, Quaternion.identity);//弾を発射
 
         bullet.GetComponent<Tama>().Set_Kakudo(dif, true, false);//弾の初期の方向を設定(方向,プレイヤーの弾かどうか,強化版の敵の弾か)
 
