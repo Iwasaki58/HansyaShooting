@@ -54,21 +54,21 @@ Unity 2019.2.3f1
         - Enemy : 敵のオブジェクトのディレクトリ
           1. Enemy_Circle.prefab : 丸の敵
           2. Enemy_Circle_Elite.prefab : 丸の敵の強化版
-          3. Enemy_Sankaku.prefab : 三角形の敵
-          4. Enemy_Sankaku_Elite.prefab : 三角形の敵の強化版
-          5. Enemy_sikaku.prefab : 四角形の敵
-          6. Enemy_sikaku_Elite.prefab : 四角形の敵の強化版
-          7. Enemy_sikaku_Wall.prefab : バリアを張っている四角形の敵
-          8. sikaku_Wall_Elite.prefab : バリアを張っている四角形の敵の強化版
+          3. Enemy_Triangle.prefab : 三角形の敵
+          4. Enemy_Triangle_Elite.prefab : 三角形の敵の強化版
+          5. Enemy_Rhombus.prefab : ひし形の敵
+          6. Enemy_Rhombus_Elite.prefab : ひし形の敵の強化版
+          7. Enemy_Square.prefab : バリアを張っている四角形の敵
+          8. Enemy_Square_Elite.prefab : バリアを張っている四角形の敵の強化版
         - Player.prefab : プレイヤーのオブジェクト
       - Item : アイテムのオブジェクトのディレクトリ
         1. Bomu_Item.prefab : ボムを１回復させるアイテム
         2. Kabe_Item.prefab : プレイヤーの正面にバリアを張るアイテム
         3. Life_Item.prefab : 体力を１回復させるアイテム
       - Tama : 弾のオブジェクトのディレクトリ
-        - Kuro_Circle 1.prefab : 丸の弾のオブジェクト
-        - Sankaku_kuro 1.prefab : 三角形の弾のオブジェクト
-        - Sikaku_kuro 1.prefab : 四角形の弾のオブジェクト
+        - Circle_Bu.prefab : 丸の弾のオブジェクト
+        - Triangle_Bu.prefab : 三角形の弾のオブジェクト
+        - Square_Bu.prefab : 四角形の弾のオブジェクト
       - UI : 画面上に表示するテキストのオブジェクトのディレクトリ
         1. GameOver.prefab : ゲームが終了した時に表示するテキスト
         2. Pause.prefab : ポーズ中に表示するテキスト
