@@ -73,10 +73,9 @@ public class Matome : MonoBehaviour
             HighScore = PlayerPrefs.GetInt("HighScore", 0);//最高得点をロード,データがなければ0を返す
 
             //テキストを変更
-            Life_Text.text = "体力 : " + Life;
-            HighScore_Text.text = "ハイスコア : " + HighScore;
-            Score_Text.text = "撃破 : " + Score;
-            Bomu_Text.text = "ボム : " + Bomu;
+            Hyouzi_Life();
+            Hyouzi_Bomu();
+            Hyouzi_Score(false);
         }
         else
         {
@@ -85,8 +84,7 @@ public class Matome : MonoBehaviour
             Time_Text = this.transform.Find("Time_Text").GetComponent<Text>();
             High_Time_Text = this.transform.Find("High_Time_Text").GetComponent<Text>();
 
-            Time_Text.text = "タイム : " + Time_Score;
-            High_Time_Text.text = "最高タイム : " + Kirisute(High_Time);
+            Hyouzi_Time(false);//経過時間を表示
         }
 
         Tama_Matome = GameObject.Find("Tama_Matome");
@@ -128,7 +126,7 @@ public class Matome : MonoBehaviour
         }
     }
 
-    private void Pause()//ポーズ
+    void Pause()//ポーズ
     {
         if (stop == false)//ポーズ状態にする
         {
@@ -152,8 +150,9 @@ public class Matome : MonoBehaviour
     {
         Time_Score += Time.deltaTime;
 
+        Hyouzi_Time(true);
+
         float Bun = Kirisute(Time_Score);//小数点第1位までに切り下げる
-        Time_Text.text = "タイム : " + Bun;
 
         if (Bun == 70 * Time_Sevent_Koeta)//70の倍数になるたびに強化版の敵が出る数を増やす(最大3)
         {
@@ -166,9 +165,18 @@ public class Matome : MonoBehaviour
             Make_Wall.On_Suitti();
         }
 
+    }
+
+    void Hyouzi_Time(bool GameStart)//経過時間を表示
+    {
+        Time_Text.text = "タイム : " + Kirisute(Time_Score);
+
         if (Time_Score > High_Time)//最高タイムを更新したら、文字を更新
         {
-            High_Time_Text.text = "最高タイム : " + Bun;
+            High_Time_Text.text = "ハイスコア : " + Kirisute(Time_Score);
+        }else if (GameStart == false)//初期設定
+        {
+            High_Time_Text.text = "ハイスコア : " + Kirisute(High_Time);
         }
     }
 
@@ -177,7 +185,7 @@ public class Matome : MonoBehaviour
         if (Max_Life > Life)//体力が最大値未満なら回復
         {
             Life++; //体力を増やす
-            Life_Text.text = "体力 : " + Life;//体力のテキストを更新
+            Hyouzi_Life();
         }
     }
 
@@ -187,7 +195,7 @@ public class Matome : MonoBehaviour
         {
             Life--;//体力を減らす
 
-            Life_Text.text = "体力 : " + Life;//体力のテキストを更新
+            Hyouzi_Life();
 
             if (Life == 0)//ゲームオーバー
             {
@@ -215,6 +223,11 @@ public class Matome : MonoBehaviour
                 PlayerPrefs.Save();
             }
         }
+    }
+
+    void Hyouzi_Life()//体力の残数を更新
+    {
+        Life_Text.text = "体力 : " + Life;//体力のテキストを更新
     }
 
     void GameOver(string Gameover_Text)//ゲームオーバーの処理
@@ -266,12 +279,7 @@ public class Matome : MonoBehaviour
 
             Return_RandItem(enemy_point);//アイテムをドロップ
 
-            Score_Text.text = "撃破 : " + Score;
-
-            if (Score > HighScore)//ハイスコアを超えたら、テキストを変更
-            {
-                HighScore_Text.text = "ハイスコア : " + Score;
-            }
+            Hyouzi_Score(true);
 
             if (Score % 18 == 0 && Score != 0)//得点に応じてエリートを出す数を増やす
             {
@@ -283,6 +291,19 @@ public class Matome : MonoBehaviour
                 Make_Wall.On_Suitti();
             }
 
+        }
+    }
+
+    void Hyouzi_Score(bool GameStart)//得点を表示
+    {
+        Score_Text.text = "撃破\n" + Score;
+
+        if (Score > HighScore)//ハイスコアを超えたら、テキストを変更
+        {
+            HighScore_Text.text = "ハイスコア\n" + Score;
+        }else if (GameStart == false)
+        {
+            HighScore_Text.text = "ハイスコア\n" + HighScore;
         }
     }
 
@@ -305,17 +326,17 @@ public class Matome : MonoBehaviour
         {
             Bomu++;//ボムを増やす
 
-            Bomu_Text.text = "ボム : " + Bomu;//テキストを更新
+            Hyouzi_Bomu();
         }        
     }
 
-    public void Use_Bomu()//ボムを使う
+    void Use_Bomu()//ボムを使う
     {
-        if (Bomu > 0 && Time.deltaTime != 0)//ポーズ中ではなく、ボムが残っているのなら
+        if (Bomu > 0 && stop == false)//ポーズ中ではなく、ボムが残っているのなら
         {
             Bomu--;//ボムを減らす
 
-            Bomu_Text.text = "ボム : " + Bomu;//テキストを更新
+            Hyouzi_Bomu();
 
             foreach (Transform transform in Tama_Matome.transform)//子要素の弾を全て消す
             {
@@ -324,6 +345,11 @@ public class Matome : MonoBehaviour
 
             audio_script.Sound("Use_Bomu");//ボム使用時の効果音
         }
+    }
+    
+    void Hyouzi_Bomu()//ボムの残数を更新
+    {
+        Bomu_Text.text = "ボム : " + Bomu;
     }
 
     float Kirisute(float num)//小数を小数点第一位まで切り捨てる

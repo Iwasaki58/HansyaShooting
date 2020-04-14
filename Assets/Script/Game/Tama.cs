@@ -44,7 +44,7 @@ public class Tama : MonoBehaviour
 
             if (Elite == true)//もし放っている敵が強化版なら
             {
-                speed *= 1.5f;//弾のスピードを1.5倍
+                speed *= 1.2f;//弾のスピードを1.2倍(元は1.5倍)
             }
         }
     }
