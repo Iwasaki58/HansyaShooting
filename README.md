@@ -126,6 +126,10 @@ Unity 2019.2.3f1
 
 ![タイトル画面](./Readme_Screenshot/HansyaShooting_SS_Title.png)
 
-## プレイ画面のスクリーンショット
+## スコアアタックのスクリーンショット
 
-![プレイ画面](./Readme_Screenshot/HansyaShooting_SS_Play.png)
+![スコアアタック](./Readme_Screenshot/HansyaShooting_SS_ScoreAttack1.png)
+
+## タイムアタックのスクリーンショット
+
+![タイムアタック](./Readme_Screenshot/HansyaShooting_SS_TimeAttack1.png)
